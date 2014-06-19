@@ -1,0 +1,25 @@
+<include file="Public:header" />
+    <div class="container-fluid">
+        <div class="row">
+            <include file="Public:sidebar" />
+            <div class="col-sm-11  col-md-8 main">
+            	<h3>数据统计</h3>
+            	 <table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>用户数</th>
+							<th>话题数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{$users_num}</td>
+							<td>{$topics_num}</td>
+						</tr>
+					</tbody>			
+				</table>
+            </div>
+           
+        </div>
+    </div>
+<include file="Public:footer" />
