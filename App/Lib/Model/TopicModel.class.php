@@ -26,9 +26,16 @@ class TopicModel  extends Model{
 		//$this->field( '*' )->where( $condition )
 		
 		for ($match_id=$count; $match_id>=1; $match_id--) {
-			$cyx_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["cyx"];
-			$xwj_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["xwj"];
-			$ghw_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["ghw"];
+			$row = $this->where("MatchID={$match_id}")->find();
+			if ($row) {
+				$cyx_bet[$match_id] = $row["cyx"];
+				$xwj_bet[$match_id] = $row["xwj"];
+				$ghw_bet[$match_id] = $row["ghw"];
+			} else {
+				$cyx_bet[$match_id] = "[0,0,0]";
+				$xwj_bet[$match_id] = "[0,0,0]";
+				$ghw_bet[$match_id] = "[0,0,0]";
+			}
 			$pubilc_money[$match_id] = 0.0;
 			$all_bet_win[$match_id] += $cyx_bet[$match_id][1]+$xwj_bet[$match_id][1]+$ghw_bet[$match_id][1];
 			$all_bet_draw[$match_id] += $cyx_bet[$match_id][3]+$xwj_bet[$match_id][3]+$ghw_bet[$match_id][3];
