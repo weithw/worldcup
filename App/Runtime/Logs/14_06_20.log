@@ -4090,3 +4090,39 @@ NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be rem
 NOTIC: [2] mysql_connect(): No route to host /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
 ERR: No route to host
 
+[ 2014-06-20T17:35:38+08:00 ] 127.0.0.1 /index.php?m=message&a=unread
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /home/ghw/www/talkpiece/ThinkPHP/Common/common.php 第 214 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000734s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000884s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+NOTIC: [2] mysql_connect(): No route to host /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+ERR: No route to host
+
+[ 2014-06-20T17:36:28+08:00 ] 127.0.0.1 /index.php?m=message&a=unread
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /home/ghw/www/talkpiece/ThinkPHP/Common/common.php 第 214 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000695s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000828s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+NOTIC: [2] mysql_connect(): No route to host /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+ERR: No route to host
+
+[ 2014-06-20T17:37:18+08:00 ] 127.0.0.1 /index.php?m=message&a=unread
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /home/ghw/www/talkpiece/ThinkPHP/Common/common.php 第 214 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000803s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+NOTIC: [2] mysql_connect(): No route to host /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+ERR: No route to host
+
+[ 2014-06-20T17:38:08+08:00 ] 127.0.0.1 /index.php?m=message&a=unread
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /home/ghw/www/talkpiece/ThinkPHP/Common/common.php 第 214 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000380s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+NOTIC: [2] mysql_connect(): No route to host /home/ghw/www/talkpiece/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+ERR: No route to host
+
