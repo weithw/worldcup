@@ -54,7 +54,7 @@ class DbMysql extends Db{
             }else{
                 $this->linkID[$linkNum] = mysql_connect( $host, $config['username'], $config['password'],true,131072);
             }
-            var_dump($config['database']);
+            
             if ( !$this->linkID[$linkNum] || (!empty($config['database']) && !mysql_select_db($config['database'], $this->linkID[$linkNum])) ) {
                 throw_exception(mysql_error());
             }
