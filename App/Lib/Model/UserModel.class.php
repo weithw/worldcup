@@ -28,10 +28,10 @@ class UserModel  extends Model{
 		}
 		return $result;
 	}
-	public function getUserField( $field, $wheresql) {
+	public function getUserField( $wheresql,$field) {
 		$data = $this->where($wheresql)->getField($field);
 		if (!empty($data)) {
-			return  $data[$field];
+			return  $data;
 		}
 	}
 
@@ -43,8 +43,8 @@ class UserModel  extends Model{
 	}
 
 	public function getUserName( $uid ) {
-		$user_list = $this->getUserField( array( 'uid'=>$uid ), 'username' );
-		return $user_list['username'];
+		$user_list = $this->getUserField( array( 'ID'=>$uid ), 'username' );
+		return $user_list;
 	}
 
     public function getUserUid( $username ) {

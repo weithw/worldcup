@@ -15,7 +15,7 @@
                                 $public_money[$count] = " - ¥".(-1*$public_money[$count]);
 
                             echo '<tr>';
-                            echo '<td>'. $team[$count*2-2] .'</td>'. '<td>'.$score[$count-1] .'</td>'. '<td>'.$team[$count*2-1] .'</td>';
+                            echo '<td>'. $teama[$count-1] .'</td>'. '<td>'.$score[$count-1] .'</td>'. '<td>'.$teamb[$count-1] .'</td>';
                             if ($record["cyx_money"][$count]>=0)
                                 $record["cyx_money"][$count] = " + ¥".$record["cyx_money"][$count];
                             else

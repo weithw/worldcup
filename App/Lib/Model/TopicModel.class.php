@@ -11,7 +11,6 @@
 
 class TopicModel  extends Model{
 	protected $tableName = 'record';
-
 	/**
 	 * 最新话题列表
 	 *
@@ -19,7 +18,12 @@ class TopicModel  extends Model{
 	 * @param [type]  $pagesize  [description]
 	 * @return [type]            [description]
 	 */
-	public function getRecord($count, $score) {
+	public function getNotFinishRecord($user_id) {
+		$username = D('user')->getUserName($user_id);
+		return $this->getField($username, true);
+	}
+
+	public function getFinishRecord($count, $score) {
 		// $redis = new Redis();
 		// $redis->connect("127.0.0.1",6379); 
 		$public_money = array();
