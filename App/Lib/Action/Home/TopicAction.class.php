@@ -14,8 +14,6 @@ class TopicAction extends  BaseAction {
 
 	public  function _initialize(){
 		parent::_initialize();
-		$cate_lists   = D('TopicCategory')->getAllCates();
-		$this->assign('cate_lists',$cate_lists);
 	}
 
 	/**
@@ -25,26 +23,23 @@ class TopicAction extends  BaseAction {
 	 */
 	public  function index() {
 		//debug_print_backtrace();
-		$topics       = D( 'Topic' )->getRecentTopic( array( 'status'=>1 ), 10 );
-		$stick_topics = D( 'Topic' )->getStickTopic();
-
-		$url = "http://worldcup.2014.163.com/schedule/calendar/?bdsc";
-        $contents = file_get_contents($url); 
-        preg_match_all('|<a class="match_team"(.*?)">(.*?)<\/a>|i',$contents,$match_team);
-        $team = $match_team[2];
-        preg_match_all('|<span class="match_score">(\d-\d)|i',$contents,$match_score);
-        $score = $match_score[1];
-        $finish_count = count($score);    
-
-        $record = D('Topic')->getRecord($finish_count, $score);
+		$result = D('Match')->getAll();
+		$finish_count = D('Match')->getFinishCount();
+        //D('Update')->update();
+		
+		foreach ($result as $key => $value) {
+			$score[$key] = $value['score'];
+			$teama[$key] = $value['teama'];
+			$teamb[$key] = $value['teamb'];
+		} 
+		
+        $record = D('Topic')->getFinishRecord($finish_count, $score);
         
         $this->assign( 'record', $record);
         $this->assign( 'finish_count', $finish_count);
-        $this->assign( 'team', $team);
+        $this->assign( 'teama', $teama);
+        $this->assign( 'teamb', $teamb);
         $this->assign( 'score', $score);
-		$this->assign( 'topics', $topics );
-		$this->assign( 'stick_topics', $stick_topics );
-		$this->assign('title', '话题列表');
 		$this->display();
 	}
 

@@ -42,65 +42,6 @@ class FeedModel  extends  Model{
 		//$redis->hset($key,$match_id,json_encode($bet));
 	}
 
-	public   function   getFeedLists($uid){
-
-		$follow_users = D('UserFollow')->where(array('from_uid'=>$uid, 'status'=>1))->select();
-
-		foreach ($follow_users as $key => $follow) {
-			$follow_uids[]  =  $follow['to_uid'];
-		}
-
-		if ($follow_uids) {
-
-			$map['uid']  = array('IN', implode(',', $follow_uids));
-
-			$result['data']  = $this->where($map)->order( 'create_time DESC' )->selectPage( 10 );
-			if (!empty($result['data'])) {
-				foreach ($result['data'] as $key => $feed) {
-					$result['data'][$key] = D('Feed')->parseFeed($feed);
-				}
-			}
-			if ( !empty( $this->page ) ) {
-				$result['page']  = $this->page;
-			}
-		}
-		return  $result;
-	}
-	public   function   addFeed($id, $type){
-		switch ($type) {
-			case 'topic':
-				$topic =  D('Topic')->getAuthorTopic($id);
-				$data  = array(
-					'uid'  => $topic['uid'],
-					'id'   => $id,
-					'type' => 'topic',
-					'template'  => '{subject}',
-					'data'      => array(
-									'subject' => '<a href="'.U('topic/detail', array('tid'=>$id)).'" target="_blank" >' . $topic['subject'] . '</a>'								
-								    ),
-					'create_time'    => $topic['create_time'] 
-				);
-				break;
-			
-			default:
-				break;
-		}
-
-		$data['data']  = serialize($data['data']);
-
-		D('Feed')->add($data);
-	}
-
-	public function parseFeed($feed){
-		$feed['data']  = !empty($feed['data']) ? unserialize($feed['data']) :  array();
-		if($feed['data'] && is_array($feed['data'])) {
-			foreach (array_keys($feed['data']) as $key) {
-				$searchs[]  = '{'.$key.'}';
-				$replaces[] = $feed['data'][$key];
-			}
-		}
-		$feed['template']  = str_replace($searchs,  $replaces, $feed['template']);
-		return $feed;
-	}
+	
 }
 ?>
