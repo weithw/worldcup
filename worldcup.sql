@@ -20,7 +20,7 @@
 -- -- Database: `zchat`
 -- --
 -- CREATE DATABASE IF NOT EXISTS `worldcup` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
- USE `llghwll_mysql_c17eqlm8`;
+ USE `study`;
 
 -- -- --------------------------------------------------------
 
