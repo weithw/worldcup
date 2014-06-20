@@ -20,7 +20,7 @@ class FeedAction extends BaseAction {
 		$this->display();
 	}
 	public function test(){
-		var_dump($_REQUEST);
+		//var_dump($_REQUEST);
 		$username = $_REQUEST['username'];
 		$match_id = $_REQUEST['match_id'];
 		$option = $_REQUEST['opt'];

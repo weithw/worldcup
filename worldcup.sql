@@ -24,18 +24,20 @@
 
 -- -- --------------------------------------------------------
 
--- --
--- -- 表的结构 `user`
--- --
+--
+-- 表的结构 `user`
+--
 
--- DROP TABLE IF EXISTS `worldcup_user`;
--- CREATE TABLE IF NOT EXISTS `worldcup_user` (
---   `ID` int(11) NOT NULL AUTO_INCREMENT,
---   `username` varchar(20) NOT NULL,
---   `password` char(32) NOT NULL,
---   PRIMARY KEY (`ID`)
--- ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+DROP TABLE IF EXISTS `worldcup_user`;
+CREATE TABLE IF NOT EXISTS `worldcup_user` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` char(32) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+insert into worldcup_user values (0,'cyx','cyx');
+insert into worldcup_user values (0,'xwj','xwj');
+insert into worldcup_user values (0,'ghw','ghw');
 
 DROP TABLE IF EXISTS `worldcup_record`;
 CREATE TABLE IF NOT EXISTS `worldcup_record` (

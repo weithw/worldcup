@@ -26,7 +26,7 @@ class FeedModel  extends  Model{
 		$bet[$option] = (int)$bet_num;
 		$data = array($username=>json_encode($bet));
 		
-		var_dump(D('feed')->where("MatchID={$match_id}")->save($data));
+		D('feed')->where("MatchID={$match_id}")->save($data);
 		// if ($username == "cyx") {
 		// 	$data = array("cyx"=>json_encode($bet));
 		// 	$this->where("MatchID={$match_id}")->save($data);

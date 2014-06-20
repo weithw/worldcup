@@ -26,7 +26,6 @@ class TopicModel  extends Model{
 		//$this->field( '*' )->where( $condition )
 		
 		for ($match_id=$count; $match_id>=1; $match_id--) {
-			echo $match_id."|";
 			$cyx_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["cyx"];
 			$xwj_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["xwj"];
 			$ghw_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["ghw"];
