@@ -10,9 +10,9 @@ return array(
 
 	'DB_HOST' 		=> '127.0.0.1',
 	'DB_TYPE'       => 'mysql',
-	'DB_NAME'       => 'study',
-	'DB_USER'       => 'softgroupuser',
-	'DB_PWD'        => 'softgroup',
+	'DB_NAME'       => 'worldcup',
+	'DB_USER'       => 'root',
+	'DB_PWD'        => '89657415',
 	'DB_PORT'       => '3306',
 	'DB_PREFIX'     => 'worldcup_',
 	'TOKEN_ON'      => true,

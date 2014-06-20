@@ -69,7 +69,7 @@ class TopicModel  extends Model{
 			$xwj_money[$match_id] = round($xwj_money[$match_id],2);
 			$ghw_money[$match_id] = round($ghw_money[$match_id],2);
 			
-			$public_money_all += $pubilc_money[$match_id];
+			$public_money_all -= $pubilc_money[$match_id];
 			$cyx_money_all += $cyx_money[$match_id];
 			$xwj_money_all += $xwj_money[$match_id];
 			$ghw_money_all += $ghw_money[$match_id];
