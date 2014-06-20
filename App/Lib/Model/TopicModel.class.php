@@ -10,7 +10,7 @@
  */
 
 class TopicModel  extends Model{
-	protected $tableName = 'topic';
+	protected $tableName = 'record';
 
 	/**
 	 * 最新话题列表
@@ -20,17 +20,16 @@ class TopicModel  extends Model{
 	 * @return [type]            [description]
 	 */
 	public function getRecord($count, $score) {
-		$redis = new Redis();
-		$redis->connect("127.0.0.1",6379); 
+		// $redis = new Redis();
+		// $redis->connect("127.0.0.1",6379); 
 		$public_money = array();
-
-		for ($match_id=$count; $match_id>=0; $match_id--) {
-			if (!$cyx_bet[$match_id] = $redis->hget("worldcup_bet_cyx",$match_id))
-				$cyx_bet[$match_id] = "[0,0,0]";
-			if (!$xwj_bet[$match_id] = $redis->hget("worldcup_bet_xwj",$match_id))
-				$xwj_bet[$match_id] = "[0,0,0]";
-			if (!$ghw_bet[$match_id] = $redis->hget("worldcup_bet_ghw",$match_id))
-				$ghw_bet[$match_id] = "[0,0,0]";
+		//$this->field( '*' )->where( $condition )
+		
+		for ($match_id=$count; $match_id>=1; $match_id--) {
+			echo $match_id."|";
+			$cyx_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["cyx"];
+			$xwj_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["xwj"];
+			$ghw_bet[$match_id] = $this->where("MatchID={$match_id}")->find()["ghw"];
 			$pubilc_money[$match_id] = 0.0;
 			$all_bet_win[$match_id] += $cyx_bet[$match_id][1]+$xwj_bet[$match_id][1]+$ghw_bet[$match_id][1];
 			$all_bet_draw[$match_id] += $cyx_bet[$match_id][3]+$xwj_bet[$match_id][3]+$ghw_bet[$match_id][3];
@@ -41,21 +40,21 @@ class TopicModel  extends Model{
 			
 			$all_bet[$match_id] = '[' . $all_bet_win[$match_id].',' . $all_bet_draw[$match_id].',' . $all_bet_lost[$match_id]. ']';
 			$sum[$match_id] = $all_bet[$match_id][1]+$all_bet[$match_id][3]+$all_bet[$match_id][5];
-			if ($score[$match_id][0] == $score[$match_id][2]){
+			if ($score[$match_id-1][0] == $score[$match_id-1][2]){
 				$cyx_money[$match_id] = $sum[$match_id] * 2 * ($cyx_bet[$match_id][3]/$all_bet_draw[$match_id]) - 2*$cyx_bet_all[$match_id];
 				$xwj_money[$match_id] = $sum[$match_id] * 2 * ($xwj_bet[$match_id][3]/$all_bet_draw[$match_id]) - 2*$xwj_bet_all[$match_id];
 				$ghw_money[$match_id] = $sum[$match_id] * 2 * ($ghw_bet[$match_id][3]/$all_bet_draw[$match_id]) - 2*$ghw_bet_all[$match_id];
-			} else if ($score[$match_id][0] > $score[$match_id][2]) {
+			} else if ($score[$match_id-1][0] > $score[$match_id-1][2]) {
 				$cyx_money[$match_id] = $sum[$match_id] * 2 * ($cyx_bet[$match_id][1]/$all_bet_win[$match_id]) - 2*$cyx_bet_all[$match_id];
 				$xwj_money[$match_id] = $sum[$match_id] * 2 * ($xwj_bet[$match_id][1]/$all_bet_win[$match_id]) - 2*$xwj_bet_all[$match_id];
-				$ghw_money[$match_id] = $sum[$match_id] * 2 * ($ghw_bet[$match_id][1]/$all_bet_win[$match_id]) - 2*$ghw_bet_all[$match_id];
-			} else if ($score[$match_id][0] < $score[$match_id][2]) {
+				$ghw_money[$match_id] = $sum[$match_id] * 2 * ($ghw_bet[$match_id][1]/$all_bet_win[$match_id]) - 2*$ghw_bet_all[$match_id];				
+			} else if ($score[$match_id-1][0] < $score[$match_id-1][2]) {
 				$cyx_money[$match_id] = $sum[$match_id] * 2 * ($cyx_bet[$match_id][5]/$all_bet_lost[$match_id]) - 2*$cyx_bet_all[$match_id];
 				$xwj_money[$match_id] = $sum[$match_id] * 2 * ($xwj_bet[$match_id][5]/$all_bet_lost[$match_id]) - 2*$xwj_bet_all[$match_id];
 				$ghw_money[$match_id] = $sum[$match_id] * 2 * ($ghw_bet[$match_id][5]/$all_bet_lost[$match_id]) - 2*$ghw_bet_all[$match_id];				
 			}		
 			$pubilc_money[$match_id] = $ghw_money[$match_id] + $xwj_money[$match_id] + $cyx_money[$match_id];
-
+			
 			$cyx_money[$match_id] = round($cyx_money[$match_id],2);
 			$xwj_money[$match_id] = round($xwj_money[$match_id],2);
 			$ghw_money[$match_id] = round($ghw_money[$match_id],2);

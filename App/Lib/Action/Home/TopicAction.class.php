@@ -34,9 +34,11 @@ class TopicAction extends  BaseAction {
         $team = $match_team[2];
         preg_match_all('|<span class="match_score">(\d-\d)|i',$contents,$match_score);
         $score = $match_score[1];
-        $finish_count = count($score)-1;
+        $finish_count = count($score);
+        var_dump($finish_count);
 
         $record = D('Topic')->getRecord($finish_count, $score);
+        
         $this->assign( 'record', $record);
         $this->assign( 'finish_count', $finish_count);
         $this->assign( 'team', $team);
