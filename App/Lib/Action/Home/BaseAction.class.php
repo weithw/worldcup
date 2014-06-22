@@ -17,7 +17,7 @@ class BaseAction extends Action{
 
 		$cookie_uid = authcode(I('cookie.talkpiece_uid'),'DECODE');
 		if($cookie_uid >0 ){
-			$user = D('User')->where(array('ID'=>$cookie_uid))->find();
+			$user = D('User')->where(array( 'ID'=>$cookie_uid))->find();
 			D('User')->autoLogin($user);
 		} else {
 			cookie('talkpiece_uid', null);
