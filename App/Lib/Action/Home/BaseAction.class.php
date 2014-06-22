@@ -17,13 +17,14 @@ class BaseAction extends Action{
 
 		$cookie_uid = authcode(I('cookie.talkpiece_uid'),'DECODE');
 		if($cookie_uid >0 ){
-			$user = D('User')->where(array('uid'=>$cookie_uid))->find();
+			$user = D('User')->where(array('ID'=>$cookie_uid))->find();
 			D('User')->autoLogin($user);
 		} else {
 			cookie('talkpiece_uid', null);
 		}
 		$this->mid = is_login();
 		$this->uid = isset($_REQUEST['uid']) ? intval($_REQUEST['uid']) : $this->mid; 
+		
 		if ($this->mid >0 ) {
 			$user  = D('User')->where(array('ID'=>$this->mid))->find();	
 		}
