@@ -1,0 +1,43 @@
+<?php
+/**
+ * TalkPiece  开源社区
+ *
+ * @author     thinkphper <service@talkpiece.com>
+ * @copyright  2014  talkpiece
+ * @license    http://www.talkpiece.com/license
+ * @version    1.0
+ * @link       http://www.talkpiece.com
+ */
+
+// define('DIR_SECURE_FILENAME', 'default.html');
+// define('DIR_SECURE_CONTENT', 'deney Access!');
+// define('APP_DEBUG', true);
+// define('APP_NAME', 'App');
+// define('APP_PATH', '../App/');
+// if (!file_exists(APP_PATH .'Runtime/Install/install.lock')) {
+// 	$_GET['m'] = 'install';
+// }
+// require '../ThinkPHP/bootstrap.php';
+
+$con = mysql_connect("127.0.0.1", "root", "89657415");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+$_POST['user'] = mysql_real_escape_string('john');
+$_POST['pwd'] = mysql_real_escape_string("' OR ''='");
+$sql = "SELECT * FROM users
+WHERE user='{$_POST['user']}'
+AND password='{$_POST['pwd']}'";
+
+echo $sql;
+
+// 不检查用户名和密码
+// 可以是用户输入的任何内容，比如：
+
+
+// 一些代码...
+
+
+?>
+
