@@ -7,7 +7,7 @@ return array(
 	'URL_MODEL'            => 0,
 	'APP_GROUP_LIST'       => 'Home,Admin',
 	'DEFAULT_GROUP'        => 'Home',
-
+	'URL_ONLINE'		   => 'http://210.30.96.51:8082/',
 	'DB_HOST' 		=> '127.0.0.1',
 	'DB_TYPE'       => 'mysql',
 	'DB_NAME'       => 'worldcup',
